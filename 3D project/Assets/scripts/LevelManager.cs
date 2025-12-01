@@ -1,11 +1,16 @@
-using TMPro;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
+
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     public int playerHealth;
-    private int highScore;
+    //private int highScore;
     public TMP_Text healthText;
 
     void Awake()
@@ -28,7 +33,7 @@ public class LevelManager : MonoBehaviour
         playerHealth = 100;
     }
 
-
+    /*
     //these methods are globally accessible
     public void SetHighScore(int score)
     {
@@ -38,7 +43,7 @@ public class LevelManager : MonoBehaviour
     {
         return highScore;
     }
-
+    */
     private void Update()
     {
         healthText.text = "health=" + playerHealth;

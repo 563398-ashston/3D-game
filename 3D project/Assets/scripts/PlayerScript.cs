@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        LevelManager.instance.SetHighScore(0);
+        //LevelManager.instance.SetHighScore(0);
         rb = GetComponent<Rigidbody>();
         playerHealthMax = 100;
     }
@@ -61,7 +61,7 @@ public class PlayerScript : MonoBehaviour
 
      //debug text output
      private void OnGUI()
-     {
+     {/*
         //read variable from LevelManager singleton
         int score = LevelManager.instance.GetHighScore();
 
@@ -73,7 +73,7 @@ public class PlayerScript : MonoBehaviour
         GUI.contentColor = Color.white;
         GUILayout.BeginArea(new Rect(10f, 10f, 1600f, 1600f));
         GUILayout.Label($"<size=24>{text}</size>");
-        GUILayout.EndArea();
+        GUILayout.EndArea();*/
      }
     public void ResetHealth()
     {
