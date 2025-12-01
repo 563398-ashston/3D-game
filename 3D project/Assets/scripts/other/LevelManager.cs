@@ -31,6 +31,7 @@ public class LevelManager : MonoBehaviour
         }
 
         playerHealth = 100;
+
     }
 
     /*
@@ -46,8 +47,9 @@ public class LevelManager : MonoBehaviour
     */
     private void Update()
     {
-        healthText.text = "health=" + playerHealth;
+     //   healthText.text = "health=" + playerHealth;
 
       
     }
+
 }

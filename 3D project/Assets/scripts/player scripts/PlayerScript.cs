@@ -4,13 +4,17 @@ public class PlayerScript : MonoBehaviour
 {
     public static int playerHealthMax;
     Rigidbody rb;
-    
+    AudioSource audioSource;
+    public AudioClip sfx1;  // sound effect asset from sfx folder 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //LevelManager.instance.SetHighScore(0);
         rb = GetComponent<Rigidbody>();
         playerHealthMax = 100;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -47,6 +51,7 @@ public class PlayerScript : MonoBehaviour
         {
             zvel = 10;
             print("player moving backwards");
+            
         }
 
 
@@ -58,9 +63,14 @@ public class PlayerScript : MonoBehaviour
 
 
     }
+    void PlaySoundEffect()
+    {
+        audioSource.PlayOneShot(sfx1, 0.7f); // play audio clip with volume 0.7
+    }
 
-     //debug text output
-     private void OnGUI()
+
+    //debug text output
+    private void OnGUI()
      {/*
         //read variable from LevelManager singleton
         int score = LevelManager.instance.GetHighScore();
@@ -75,9 +85,5 @@ public class PlayerScript : MonoBehaviour
         GUILayout.Label($"<size=24>{text}</size>");
         GUILayout.EndArea();*/
      }
-    public void ResetHealth()
-    {
-        //playerHealth = playerHealthMax;
-    }
 }
 
