@@ -10,7 +10,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     public int playerHealth;
-    //private int highScore;
+    public int highScore;
+    public int playerScore;
     public TMP_Text healthText;
 
     void Awake()
@@ -34,7 +35,22 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    /*
+    private void Update()
+    {
+        healthText.text = "Health: " + playerHealth;
+
+        //update player score
+
+        if (playerHealth > 70)
+        {
+            playerScore = playerScore + 0;
+        }
+
+     
+
+    }
+
+
     //these methods are globally accessible
     public void SetHighScore(int score)
     {
@@ -44,12 +60,4 @@ public class LevelManager : MonoBehaviour
     {
         return highScore;
     }
-    */
-    private void Update()
-    {
-     //   healthText.text = "health=" + playerHealth;
-
-      
-    }
-
 }

@@ -11,10 +11,22 @@ public class PlayerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //LevelManager.instance.SetHighScore(0);
+        LevelManager.instance.SetHighScore(0);
         rb = GetComponent<Rigidbody>();
         playerHealthMax = 100;
         audioSource = GetComponent<AudioSource>();
+
+        if (PlayerPrefs.HasKey("high") == true)
+        {
+            
+            //retrieve it and store it in a variable
+            LevelManager.instance.highScore = PlayerPrefs.GetInt("high");
+        }
+        else
+        {
+            // the key musicVol is null so give it a default value of 0.5f
+            PlayerPrefs.SetInt("high", 1000);
+        }
     }
 
     // Update is called once per frame
@@ -30,6 +42,7 @@ public class PlayerScript : MonoBehaviour
         {
             xvel = 10;
             print("player moving forwards");
+        //    LevelManager.instance.playerScore += 1;
         }
 
        
@@ -37,6 +50,7 @@ public class PlayerScript : MonoBehaviour
         {
             xvel = -10;
             print("player moving left");
+           // LevelManager.instance.playerScore += 1;
         }
        
 
@@ -44,6 +58,7 @@ public class PlayerScript : MonoBehaviour
         {
             zvel = -10;
             print("player moving right");
+            //LevelManager.instance.playerScore += 1;
         }
         
 
@@ -51,7 +66,8 @@ public class PlayerScript : MonoBehaviour
         {
             zvel = 10;
             print("player moving backwards");
-            
+            //LevelManager.instance.playerScore += 1;
+
         }
 
 
@@ -60,6 +76,24 @@ public class PlayerScript : MonoBehaviour
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x * 0.7f, rb.linearVelocity.y, rb.linearVelocity.z * 0.7f );
 
+
+        //debug change score
+        if (Input.GetKey("2"))
+        {
+            LevelManager.instance.playerScore+=10;
+        }
+
+        if (Input.GetKey("1"))
+        {
+            LevelManager.instance.playerScore-= 10;
+        }
+
+        if(LevelManager.instance.playerScore > LevelManager.instance.highScore)
+        {
+            LevelManager.instance.highScore = LevelManager.instance.playerScore;
+            PlayerPrefs.SetInt("high", LevelManager.instance.highScore);
+
+        }
 
 
     }
@@ -71,19 +105,22 @@ public class PlayerScript : MonoBehaviour
 
     //debug text output
     private void OnGUI()
-     {/*
+     {
         //read variable from LevelManager singleton
         int score = LevelManager.instance.GetHighScore();
 
-        string text = "High score: " + score;
+        string text = "High score: " + LevelManager.instance.highScore;
 
-        //text += "\nThis is more text";
+
+        text += "       Player score: " + LevelManager.instance.playerScore;
+        text += "\nPlayer health: " + LevelManager.instance.playerHealth;
+        
 
         // define debug text area
         GUI.contentColor = Color.white;
         GUILayout.BeginArea(new Rect(10f, 10f, 1600f, 1600f));
-        GUILayout.Label($"<size=24>{text}</size>");
-        GUILayout.EndArea();*/
+        GUILayout.Label($"<size=40>{text}</size>");
+        GUILayout.EndArea();
      }
 }
 

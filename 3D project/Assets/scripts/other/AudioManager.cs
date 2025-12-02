@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
 
     
     public Sound[] sounds;
-    //AudioSource audioSource; //reference to the audio source component on the game object
+    
 
     void Awake()
     {

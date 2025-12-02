@@ -285,6 +285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   playerHealth: 100
+  highScore: 0
+  playerScore: 0
   healthText: {fileID: 0}
 --- !u!4 &1698210770
 Transform:
@@ -318,7 +320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1774091950
 Light:
   m_ObjectHideFlags: 0
